@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="{% url 'home-page' %}" class="active">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'about-page' %}">About</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li>
+                    <a href="{% url 'stdreg-page' %}">Registration</a>
+                </li>
+                <li>
+                    <a href="{% url 'stdview-page' %}">View Student</a>
+                </li>
+            </ul>
+            </ul>
+            </ul>
+        </nav>
+        <div>
+            <form name="std-reg" method="post">
+                {% csrf_token %}
+                {{frm.as_p}}
+                <input type="submit" value="Save">
+            </form>
+            {% if messages %}
+            {% for msg in messages %}
+                {{msg}}
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

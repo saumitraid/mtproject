@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="{% url 'home-page' %}" class="active">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'about-page' %}">About</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+            </ul>
+            </ul>
+        </nav>
+        {% if allProd %}
+        <table cellpadding="10">
+            <tr>
+                {% for prd in allProd %}
+                <td>
+                    <img src="{{prd.image.url}}" width="250" height="175">
+                    <h4>{{prd.name}}</h4>
+                    <h4>&#x20b9;{{prd.price}}</h4>
+                    <p>
+                        {{prd.description}}
+                    </p>
+                </td>
+                {% endfor %}
+            </tr>
+        </table>
+        {% else %}
+        No Product Found
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Student</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="{% url 'home-page' %}" class="active">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'about-page' %}">About</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li>
+                    <a href="{% url 'stdreg-page' %}">Registration</a>
+                </li>
+                <li>
+                    <a href="{% url 'stdview-page' %}">View Student</a>
+                </li>
+            </ul>
+            </ul>
+            </ul>
+        </nav>
+        
+    <h1>All Students</h1>
+    {% if allStd %}
+    <table cellpadding="7" cellspacing="0" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact Number</th>
+                <th>Address</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rec in allStd %}
+            <tr>
+                <td>{{rec.sname}}</td>
+                <td>{{rec.smobile}}</td>
+                <td>{{rec.saddress}}</td>
+                <td><a href="stdupd/{{rec.sid}}"><button>Update</button></a></td>
+                <td><a href="/stddel/{{rec.sid}}"><button>Delete</button></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <h2>No student details found</h2>
+    {% endif %}
+    {% if messages %}
+    {% for msg in messages %}
+        {{msg}}
+    {% endfor %}
+    {% endif %}
+    </div>
+</body>
+</html>

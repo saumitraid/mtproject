@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-3</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="{% url 'home-page' %}" class="active">Hi {{request.user.get_full_name}} </a>
+                </li>
+                <li>
+                    <a href="{% url 'home-page' %}" class="active">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'about-page' %}">About</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li>
+                    <a href="{% url 'stdreg-page' %}">Registration</a>
+                </li>
+                <li>
+                    <a href="{% url 'stdview-page' %}">View Student</a>
+                </li>
+                <li>
+                    <a href="{% url 'user-logout' %}">Logout</a>
+                </li>
+            </ul>
+            </ul>
+            </ul>
+        </nav>
+        <div class="content content-margin bg-red">
+            <ul>
+                <li>Delhi</li>
+                <li>Kolkata</li>
+                <li>Mumbai</li>
+            </ul>
+        </div>
+        <div class="content content-margin bg-yellow">
+            2
+        </div>
+        <div class="content bg-green">
+            3
+        </div>
+    </div>
+</body>
+</html>
